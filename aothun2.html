@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/1147679ae7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product.css">
+    
+    <title>Áo thun</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+* {
+    
+    margin:0;
+    padding:0;
+   
+   
+}
+body{
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    color: #111;
+    line-height: 1.15;
+}
+#wrapper{
+    max-width: 1250px;
+    margin: 0 auto;
+}
+ul.products{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+ul.products li{
+    flex-basis: 25%;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+ul.products li img{
+    max-width: 100%;
+    height: auto;
+}
+ul.products li .product-top{
+    position: relative;
+    overflow: hidden;
+}
+ul.products li:hover .product-top .product-thumb img{
+    filter: opacity(80%);
+}
+ul.products li .product-top .product-thumb {
+    display: block;
+}
+ul.products li .product-top .product-thumb img{
+    display: block;
+}
+ul.products li .product-top a.buy-now{
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    background-color: #446084;
+    color: #fff;
+    padding: 10px 0px;
+    position: absolute;
+    width: 100%;
+    bottom: -36px;
+    transition: 0.25s ease-in-out;
+    opacity: 0.85;
+} 
+ul.products li:hover a.buy-now{
+    bottom: 0px;
+}
+ul.products li .product-info {
+    padding: 10px 0px;
+}
+ul.products li .product-info a{
+    display: block;
+    text-decoration: none;
+
+}
+ul.products li:hover .product-info a.product-name{
+    color: rgb(244, 101, 13);
+}
+ul.products li .product-info a.product-name{
+    color: #334862;
+    text-align: center;
+}
+ul.products li .product-info .product-price{
+    color: #111;
+    padding: 2px 0px;
+    font-weight: 600;
+    text-align: center;
+}
+
+#chuyentrang{
+   
+    width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 30px;
+   
+}
+
+ul.n{
+  display: flex;  
+  text-align: center;
+  color: #cdd0d4;
+    
+}
+ul.n li{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    
+
+}
+
+  </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="index.html"> <img src="images/logo-Photoroom.png-Photoroom.png" style="width:200px"></a>
+         <p>KIẾN THỨC - KINH NGHIỆM - TRẢI NGHIỆM</p>
+        
+     </div>
+    
+    <header style="box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);">
+   
+        <div class="menu" style="margin-left: 50px;">
+            <li class="menuu"><a href="" style="font-size: 15px;">ÁO KHOÁC <i class="fa-solid fa-chevron-down" style="font-size: 10px;margin-left: 4px;"></i></a>
+                <ul class="sub-menu">
+                        <li style="border-top: 1px solid black;"><a href="AoKhoac.html">All Áo Khoác</a></li>
+                        <li><a href="aokhoacni.html">Áo Khoác Nỉ</a></li>
+                        <li><a href="aokhoacdu.html">Áo Khoác Dù</a></li>
+                        <li><a href="aokhoackaki.html">Áo Khoác KaKi</a></li>
+                        <li><a href="aokhoacni.html">Áo Blazer Nam</a></li>
+                </ul>
+            </li>
+            <li class="menuu"><a href="" style="font-size: 15px;">ÁO THUN<i class="fa-solid fa-chevron-down" style="font-size: 10px;margin-left: 4px;"></i></a>
+                <ul class="sub-menu">
+                    <li style="border-top: 1px solid black;"><a href="aothun.html">All Áo Thun</a></li>
+                        <li><a href="aothuntayngan.html">Áo Thun Tay Ngắn</a></li>
+                        <li><a href="aothuntaydai.html">Áo Thun Tay Dài</a></li>
+                        <li><a href="aopolo.html">Áo Thun PoLo</a></li>
+                </ul>
+            </li>
+            <li class="menuu"><a href="" style="font-size: 15px;">SƠ MI<i class="fa-solid fa-chevron-down" style="font-size: 10px;margin-left: 4px;"></i></a>
+                <ul class="sub-menu">
+                    <li style="border-top: 1px solid black;"><a href="Somi.html">All Sơ Mi</a></li>
+                        <li><a href="Somi.html">Sơ Mi Tay Ngắn</a></li>
+                        <li><a href="Somi.html">Sơ Mi Tay Dài</a></li>
+                   
+                </ul>
+            </li>
+            <li class="menuu"><a href="" style="font-size: 15px;">QUẦN DÀI<i class="fa-solid fa-chevron-down" style="font-size: 10px;margin-left: 4px;"></i></a>
+                <ul class="sub-menu">
+                    <li style="border-top: 1px solid black;"><a href="quandai.html">All Quần Dài</a></li>
+                    <li><a href="quankaki.html">Quần KaKi</a></li>
+                    <li><a href="quandai.html">Quần Tây</a></li>
+                    <li><a href="quanjean.html">Quần Jean</a></li>
+                
+                </ul>    
+            </li>
+            <li class="menuu"><a href="" style="font-size: 15px;">QUẦN SHORT<i class="fa-solid fa-chevron-down" style="font-size: 10px;margin-left: 4px;"></i></a>
+                <ul class="sub-menu">
+                    <li style="border-top: 1px solid black;"><a href="quanshort.html">All Quần Short</a></li>
+                    <li><a href="quanshortkaki.html">Quần Short KaKi</a></li>
+                    <li><a href="quanshortthun.html">Quần Short Thun</a></li>
+                    <li><a href="quanshortjean.html">Quần Short Jean</a></li>
+                   
+                   
+                </ul>    
+            </li>
+            
+         
+        </div>
+        <li style="border-bottom: 1px solid black;margin-right: 25px;" ><a href="all.html" style="font-size: 15px">ALL</a></li>
+        <li style="background-color: red;"><a href="sale.html" style="font-size: 15px;color: gold;">SALE</a></li>
+        <div class="others">
+            <li><input placeholder="Tìm Kiếm" type="text" style="width: 350px;padding-left: 10px;" > <i class="fas fa-search" style="padding-top: 5px;padding-right: 10px;"></i></li>
+           
+            <li style="text-align: center;" > 
+                <a class="fa fa-user-plus"  id="userLink" href="login.html" ></a> 
+                <div id="userGreeting" style="background-color: blanchedalmond;border-radius: 20px;width: 80px;cursor: pointer;margin: 0 auto;">
+                </div>
+               <div class="account" style="display:flex;">
+                <a id="userInfoLink" href="thongtinkh.html" style="display: none;margin-left: 15px;margin-top: 10px;"><button style="width: 70px;cursor: pointer;">Thông tin</button></a>
+                <button id="logoutBtn" style="display: none;margin-left: 15px;margin-top: 10px;width: 70px;">Đăng xuất</button>
+               </div>
+            </li>
+           <div class="price-t" style="margin-left: 20px;"> <li  class="fa fa-shopping-bag" > <span>0<sub>đ</sub></span></div>
+            </li>
+        </div>
+       
+    </header>
+    <div id="alert-container"></div>
+<section>
+    <div class="danhmuc">
+       <a href="index.html">Trang chủ</a> <span>/</span>
+       <a href="">Danh mục</a>  <span>/</span>
+       <a href="" style="color: rgb(114, 114, 114);">Áo Thun</a>
+    </div>
+
+    <div class="sanpham">
+        <h2 style="font-family:Georgia, 'Times New Roman', Times, serif">Áo Thun</h2>
+        <select name="sanpham" id="">
+            <option value="1">Sản phẩm nổi bật</option>
+            <option value="2">Giá: Tăng dần</option>
+            <option value="3">Giá: Giảm dần</option>
+            <option value="4">Tên: A->Z</option>
+            <option value="5">Tên: Z->A</option>
+              </select>
+    </div>
+
+    <div id="wrapper">
+        <ul class="products">
+           
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="images/aothun2.webp" alt="">
+                        </a>
+                        <a href="" class="buy-now">Mua ngay</a>
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-name">Áo Thun Polo Nam ATP0039</a>
+                        <div class="product-price">280.000 <sup>đ</sup></div>
+                    </div>
+                </div>
+            </li>
+          
+           
+         
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="images/aothun6.webp" alt="">
+                        </a>
+                        <a href="" class="buy-now">Mua ngay</a>
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-name">Áo Thun Tanktop ATN0162
+                        </a>
+                        <div class="product-price">195.000 <sup>đ</sup></div>
+                    </div>
+                </div>
+           
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="images/aothun8.webp" alt="">
+                        </a>
+                        <a href="" class="buy-now">Mua ngay</a>
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-name">Áo Thun Polo Sọc Cotton ATP0038</a>
+                        <div class="product-price">320.000 <sup>đ</sup></div>
+                    </div>
+                </div>
+            </li>
+           
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="images/aothun10.webp" alt="">
+                        </a>
+                        <a href="" class="buy-now">Mua ngay</a>
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-name">Áo Thun Polo Sọc Cotton ATP0038</a>
+                        <div class="product-price">320.000 <sup>đ</sup></div>
+                    </div>
+                </div>
+            </li>
+         
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img src="images/aothun13.jpg" alt="">
+                        </a>
+                        <a href="" class="buy-now">Mua ngay</a>
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-name">Áo Thun Polo Tay Dài ATD0013</a>
+                        <div class="product-price">320.000 <sup>đ</sup></div>
+                    </div>
+                </div>
+            </li>
+           
+    </div>
+</section>
+<div id="chuyentrang" style="text-align: center;">
+    <ul class="n">
+        <li>
+            <div class="qa"><a href="AoKhoac.html"><i class="fa-solid fa-arrow-left"></i></a></div>
+        </li>
+      
+        <li>
+            <div class="qa"><a href="AoKhoac.html">1</a></div>
+        
+        </li>
+        <li>
+            <div class="qa">2</div>
+        </li>
+        
+    </ul>
+</div>
+
+<section class="card">
+    <i class="fa-solid fa-xmark"></i>
+    <h2>Card</h2>
+    <form action="">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Size</th>
+                    <th>SL</th>
+                    <th>Chọn</th>
+                </tr>
+
+            </thead>
+            <tbody >
+              
+            </tbody>
+        </table>
+        <div class="price-total">
+            <p style="font-weight: bold;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            ">Tổng tiền: <span>0<sup>đ</sup></span></p>
+        </div>
+         <div class="buy" style="margin-top:50px ;">
+            <a href="cart.html" style="border: 1px solid black;background-color: aliceblue  ;padding: 10px;">XEM GIỎ HÀNG</a>
+            <a style="border: 1px solid black;background-color: aliceblue ;padding: 10px ;" href="Thanhtoan.html">MUA NGAY</a>
+         </div>
+    </form>
+
+</section>
+
+<div class="banner">
+<a href=""><img src="images/b1.png" alt="" srcset=""></a>
+<a href=""><img src="images/b2.png" alt="" srcset=""></a>
+<a href=""><img src="images/b3.png" alt=""></a>
+</div>
+<div class="bannercon">
+<img src="images/f1.webp" alt="">
+<img src="images/f2.webp" alt="">
+<img src="images/f3.webp" alt="">
+<img src="images/f4.webp" alt="">
+<img src="images/f5.webp" alt="">
+<img src="images/f6.webp" alt="">
+
+
+</div>
+</section>
+<<!----------------------footer------------------->>
+<footer class="footer">
+<div class="footer-grid">
+    <div class="footer-item">
+        <p>THÔNG TIN LIÊN HỆ</p>
+        <ul>
+         
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="#">Kiểm tra đơn hàng</a></li>
+            <li><a href="#">Cách chọn Size</a></li>
+            <li><a href="#">Câu hỏi thường gặp</a></li> 
+            <li><a href="#">Hướng dẫn bảo quản</a></li> 
+        </ul>
+    </div>
+    <div class="footer-item">
+        <p>CHÍNH SÁCH</p>
+        <ul>
+            <li><a href="#">Hướng dẫn mua hàng</a></li>
+            <li><a href="#">Khách hàng thân thiết</a></li>
+            <li><a href="#">Chính sách đổi hàng</a></li>
+            <li><a href="#">Chính sách bảo mật</a></li>
+            <li><a href="#">Đối tác sản xuất</a></li>
+          
+        </ul>
+    </div>
+    <div class="footer-item">
+        <p>KẾT NỐI VỚI FASHIONSTORE</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/kentavietnam"><i class="fa-brands fa-facebook""></i></a>
+            <a href="https://x.com/home?utm_source=homescreen&utm_medium=shortcut"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://discord.com/login"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x31752ecf8b237e5f:0x8a00621a67ad5e18?source=g.page.share"><i class="fa-brands fa-google"></i></a>
+        </div>
+    </div>
+    <div class="footer-item">
+        <p>THÔNG TIN CỬA HÀNG</p>
+        <ul style="margin-left: 0px;">
+            <li style="list-style-type: none;"><a href=""><i class="fa-solid fa-house"></i><p> 278 Nguyễn Thị Tú, Bình Hừng Hòa B, Bình Tân</p></a></li>
+            <li style="list-style-type: none;"><a href=""><i class="fa-solid fa-house"></i><p>140 Lê Trọng Tấn, Tân Phú</p></a></li>
+            <li style="list-style-type: none;"><a href="#"><i class="fa-solid fa-phone"></i><b>Hotline:</b><p>0332643954</p></a></li>
+            <li style="list-style-type: none;"><a href="#"> <i class="fa-solid fa-envelope"></i><b>Email:</b><p>datle5721@gmail.com</p></a></li>
+            
+        </ul>
+    </div>
+
+  
+</div>
+
+<div class="vien" style="border-bottom: 1px dotted rgb(172, 170, 170);margin-top: 50px;margin-bottom: 50px;width: 1200px;margin-left: 110px;"></div>
+</footer>
+
+
+</body>
+
+<div class="bannercon">
+    <img src="images/f1.webp" alt="">
+    <img src="images/f2.webp" alt="">
+    <img src="images/f3.webp" alt="">
+    <img src="images/f4.webp" alt="">
+    <img src="images/f5.webp" alt="">
+    <img src="images/f6.webp" alt="">
+ 
+    
+</div>
+</section>
+<<!----------------------footer------------------->>
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-item">
+            <p>THÔNG TIN LIÊN HỆ</p>
+            <ul>
+             
+                <li><a href="gioithieu.html">Giới thiệu</a></li>
+                <li><a href="page2.html">Kiểm tra đơn hàng</a></li>
+                <li><a href="//theme.hstatic.net/1000096703/1000836887/14/size_chart_desktop.jpg?v=291" target="_blank">Cách chọn Size</a></li>
+                <li><a href="#">Câu hỏi thường gặp</a></li> 
+                <li><a href="#">Hướng dẫn bảo quản</a></li> 
+            </ul>
+        </div>
+        <div class="footer-item">
+            <p>CHÍNH SÁCH</p>
+            <ul>
+                <li><a href="hd_muahang.html">Hướng dẫn mua hàng</a></li>
+                <li><a href="thông tin thành viên.html">Khách hàng thân thiết</a></li>
+                <li><a href="hd_muahang.html">Chính sách đổi hàng</a></li>
+                <li><a href="hd_muahang.html">Chính sách bảo mật</a></li>
+                <li><a href="hd_muahang.html">Đối tác sản xuất</a></li>
+              
+            </ul>
+        </div>
+        <div class="footer-item">
+            <p>KẾT NỐI VỚI FASHIONSTORE</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/kentavietnam"><i class="fa-brands fa-facebook""></i></a>
+                <a href="https://x.com/home?utm_source=homescreen&utm_medium=shortcut"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://discord.com/login"><i class="fa-brands fa-discord"></i></a>
+                <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x31752ecf8b237e5f:0x8a00621a67ad5e18?source=g.page.share"><i class="fa-brands fa-google"></i></a>
+            </div>
+        </div>
+        <div class="footer-item">
+            <p>THÔNG TIN CỬA HÀNG</p>
+            <ul style="margin-left: 0px;">
+                <li style="list-style-type: none;"><a href=""><i class="fa-solid fa-house"></i><p> 278 Nguyễn Thị Tú, Bình Hừng Hòa B, Bình Tân</p></a></li>
+                <li style="list-style-type: none;"><a href=""><i class="fa-solid fa-house"></i><p>140 Lê Trọng Tấn, Tân Phú</p></a></li>
+                <li style="list-style-type: none;"><a href="#"><i class="fa-solid fa-phone"></i><b>Hotline:</b><p>0332643954</p></a></li>
+                <li style="list-style-type: none;"><a href="#"> <i class="fa-solid fa-envelope"></i><b>Email:</b><p>datle5721@gmail.com</p></a></li>
+                
+            </ul>
+        </div>
+
+      
+    </div>
+
+    <div class="vien" style="border-bottom: 1px dotted rgb(172, 170, 170);margin-top: 50px;margin-bottom: 50px;width: 1200px;margin-left: 110px;"></div>
+</footer>
+
+
+</body>
+<script>
+ document.addEventListener('DOMContentLoaded', () => {
+    loadCartFromLocalStorage();
+    setupAddToCartButtons();
+});
+
+function setupAddToCartButtons() {
+    const btns = document.querySelectorAll('.carousel-item .add-to-cart-btn');
+    btns.forEach(function(button) {
+        button.addEventListener("click", function(event) {
+            var btnItem = event.target;
+            var product = btnItem.closest('.carousel-item'); 
+            var productImg = product.querySelector(".main-image").src; 
+            var productName = product.querySelector(".tieude p").textContent.trim(); 
+            var productPrice = product.querySelector(".tieude b").textContent.trim();
+            console.log("Add to cart button clicked", productName, productPrice); 
+            addToCart(productPrice, productImg, productName);
+        });
+    });
+}
+
+function addToCart(productPrice, productImg, productName) {
+    var cartTable = document.querySelector("#cart-table tbody");
+
+    var existingProduct = Array.from(cartTable.querySelectorAll("tr")).find(row => {
+        return row.querySelector("td:nth-child(2)").textContent === productName;
+    });
+
+    if (existingProduct) {
+        var quantityInput = existingProduct.querySelector("input");
+        var currentQuantity = parseInt(quantityInput.value);
+        quantityInput.value = currentQuantity + 1; 
+        showAlert("Đã cập nhật số lượng trong giỏ hàng", "info");
+        carttotal();
+        saveCartToLocalStorage();
+        return;
+    }
+
+    var addtr = createCartRow(productPrice, productImg, productName);
+    cartTable.appendChild(addtr);
+
+    showAlert("Đã thêm vào giỏ hàng", "success");
+
+    saveCartToLocalStorage();
+    carttotal();
+}
+   
+   function createCartRow(productPrice, productImg, productName) {
+       var addtr = document.createElement("tr");
+   
+       var imgCell = document.createElement("td");
+       var img = document.createElement("img");
+       img.src = productImg;
+       img.alt = productName;
+       img.style.width = "100px";
+       imgCell.appendChild(img);
+   
+       var nameCell = document.createElement("td");
+       nameCell.textContent = productName;
+   
+       var priceCell = document.createElement("td");
+       priceCell.innerHTML = "<b>" + productPrice + "</b>";
+   
+       var sizeCell = document.createElement("td");
+       sizeCell.textContent = "L";
+   
+       var quantityCell = document.createElement("td");
+       var quantityInput = document.createElement("input");
+       quantityInput.type = "number";
+       quantityInput.value = "1";
+       quantityInput.min = "1";
+       quantityInput.style.width = "30px";
+       quantityInput.style.outline = "none";
+       quantityInput.addEventListener('change', () => {
+           carttotal();
+           saveCartToLocalStorage();
+       });
+       quantityCell.appendChild(quantityInput);
+   
+       var deleteCell = document.createElement("td");
+       deleteCell.textContent = "Xóa";
+       deleteCell.style.cursor = "pointer";
+       deleteCell.addEventListener('click', function() {
+           addtr.remove();
+           carttotal();
+           saveCartToLocalStorage();
+       });
+   
+       addtr.appendChild(imgCell);
+       addtr.appendChild(nameCell);
+       addtr.appendChild(priceCell);
+       addtr.appendChild(sizeCell);
+       addtr.appendChild(quantityCell);
+       addtr.appendChild(deleteCell);
+   
+       return addtr;
+   }
+   
+   function carttotal() {
+       var totalC = 0;
+       var cartItems = document.querySelectorAll("#cart-table tbody tr"); // Change here
+   
+       cartItems.forEach(function(item) {
+           var inputValue = parseInt(item.querySelector("input").value);
+           var productPrice = parseFloat(item.querySelector("td:nth-child(3) b").textContent.trim().replace(/\D/g, ''));
+           var totalA = inputValue * productPrice;
+           totalC += totalA;
+       });
+   
+       var totalPriceElement = document.querySelector(".price-total span");
+       var totalPriceE = document.querySelector(".price-t span");
+       totalPriceElement.textContent = totalC.toLocaleString('de-DE') + "₫";
+       totalPriceE.textContent = totalC.toLocaleString('de-DE') + "₫";
+   }
+   
+   function saveCartToLocalStorage() {
+       var cartItems = document.querySelectorAll("#cart-table tbody tr"); // Change here
+       var cartData = [];
+   
+       cartItems.forEach(function(item) {
+           var productImg = item.querySelector("td img").src;
+           var productName = item.querySelector("td:nth-child(2)").textContent;
+           var productPrice = item.querySelector("td:nth-child(3) b").textContent;
+           var quantity = item.querySelector("input").value;
+           cartData.push({
+               img: productImg,
+               name: productName,
+               price: productPrice,
+               quantity: quantity
+           });
+       });
+   
+       localStorage.setItem('cart', JSON.stringify(cartData));
+   }
+   
+   function loadCartFromLocalStorage() {
+       var cartData = JSON.parse(localStorage.getItem('cart')) || [];
+       var cartTable = document.querySelector("#cart-table tbody"); // Change here
+   
+       cartData.forEach(function(item) {
+           var addtr = createCartRow(item.price, item.img, item.name);
+           addtr.querySelector("input").value = item.quantity;
+           cartTable.appendChild(addtr);
+       });
+   
+       carttotal();
+   }
+   
+   function showAlert(message, type) {
+       var alertContainer = document.getElementById('alert-container');
+       var alert = document.createElement('div');
+       alert.className = `alert alert-${type}`;
+       alert.textContent = message;
+       alertContainer.appendChild(alert);
+   
+       setTimeout(() => {
+           alert.style.opacity = '0';
+           setTimeout(() => {
+               alert.remove();
+           }, 500); // Wait for the transition to complete before removing
+       }, 3000);
+   }
+   
+   const cartBtnClose = document.querySelector(".fa-xmark");
+   const cartBtnShow = document.querySelector(".fa-shopping-bag");
+   const cart = document.querySelector(".card");
+   
+   cartBtnShow.addEventListener("click", function() {
+       cart.style.right = "0";
+   });
+   
+   cartBtnClose.addEventListener("click", function() {
+       cart.style.right = "-100%";
+   });
+
+   document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.querySelector('.others input');
+    const tbody = document.querySelector('.search-sp tbody');
+    const productItems = document.querySelectorAll('.carousel-item');
+
+    // Biến để lưu trữ danh sách sản phẩm
+    const products = [];
+
+    // Lặp qua mỗi mục sản phẩm và lưu thông tin sản phẩm vào mảng products
+    productItems.forEach(function(productItem) {
+        const productName = productItem.querySelector('.tieude p').textContent;
+        const productPrice = productItem.querySelector('.tieude b').textContent;
+        const productMainImage = productItem.querySelector('.main-image').src;
+
+        products.push({
+            name: productName,
+            price: productPrice,
+            mainImage: productMainImage
+        });
+    });
+
+    // Lắng nghe sự kiện input trên ô tìm kiếm
+    searchInput.addEventListener('input', function() {
+        const searchText = searchInput.value.trim(); // Lấy giá trị nhập vào và loại bỏ khoảng trắng thừa
+
+        // Xóa các hàng hiện có trong bảng tìm kiếm
+        tbody.innerHTML = '';
+
+        // Duyệt qua mỗi sản phẩm
+        let hasSearchResults = false; // Biến để kiểm tra xem có kết quả tìm kiếm không
+        products.forEach(function(product) {
+            if (product.name.includes(searchText)) { // Kiểm tra xem tên sản phẩm có chứa giá trị nhập vào không
+                // Tạo một hàng mới cho sản phẩm tìm thấy
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td><img src="${product.mainImage}" alt="${product.name}"></td>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                `;
+
+                // Thêm hàng mới vào tbody của bảng tìm kiếm
+                tbody.appendChild(newRow);
+                hasSearchResults = true; // Đánh dấu là có kết quả tìm kiếm
+            }
+        });
+
+        // Kiểm tra nếu không có kết quả tìm kiếm thì ẩn bảng tìm kiếm
+        if (!hasSearchResults) {
+            tbody.innerHTML = '';
+        }
+        
+        // Kiểm tra nếu giá trị trong ô tìm kiếm là rỗng thì xóa bảng tìm kiếm
+        if (searchText === '') {
+            tbody.innerHTML = '';
+        }
+    });
+
+    // Lắng nghe sự kiện khi input mất focus
+    searchInput.addEventListener('blur', function() {
+        tbody.innerHTML = ''; // Xóa bảng tìm kiếm khi input mất focus
+    });
+
+    // Lắng nghe sự kiện khi nhấn Enter
+    searchInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Ngăn chặn hành động mặc định của nút Enter trong form
+            searchInput.blur(); // Mất focus khỏi input để tránh kích hoạt sự kiện input lần nữa
+        }
+    });
+});
+
+const searchBtnClose = document.querySelector(".fa-arrow-left");
+const searchBtnShow = document.querySelector(".fa-search");
+const searchSection = document.querySelector("#search-section");
+
+searchBtnShow.addEventListener("click", function() {
+    searchSection.style.left = "0";
+});
+
+searchBtnClose.addEventListener("click", function() {
+    searchSection.style.left = "-100%";
+});
+
+
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    let isDisplayed = false; // Biến để theo dõi trạng thái hiển thị
+
+    const currentUser = localStorage.getItem('currentUser');
+    const userGreeting = document.getElementById('userGreeting');
+    const userPlusIcon = document.querySelector(".fa-user-plus");
+    const logoutBtn = document.getElementById('logoutBtn');
+    const userInfoLink = document.getElementById('userInfoLink');
+
+    if (currentUser) {
+        // Hiển thị tên người dùng
+        userGreeting.textContent = ` ${currentUser}!`;
+        userPlusIcon.style.display = "none";
+        userGreeting.addEventListener("click", () => {
+            // Đảo ngược trạng thái hiển thị
+            isDisplayed = !isDisplayed;
+
+            // Hiển thị hoặc ẩn nút "Thông tin" và "Đăng xuất" tùy thuộc vào trạng thái hiện tại
+            userInfoLink.style.display = isDisplayed ? "block" : "none";
+            logoutBtn.style.display = isDisplayed ? "block" : "none";
+        });
+
+        logoutBtn.addEventListener("click", () => {
+            // Xóa dữ liệu người dùng đã đăng nhập
+            localStorage.removeItem('currentUser');
+            // Tải lại trang để cập nhật giao diện
+            window.location.reload();
+        });
+    } else {
+        // Hiển thị nút đăng nhập và ẩn tên người dùng
+        userGreeting.textContent = "";
+        userPlusIcon.style.display = "block";
+        logoutBtn.style.display = "none"; // Ẩn nút đăng xuất khi không có người dùng đăng nhập
+        userInfoLink.style.display = "none";
+    }
+});
+
+
+</script>
+<script src="function.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</html>

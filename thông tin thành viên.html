@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/1147679ae7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Thông Tin Thành Viên</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, rgba(34, 34, 34, 0.9), rgba(85, 85, 85, 0.9)), url('https://images.unsplash.com/photo-1542281286-9e0a16bb7366?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 150px;
+        }
+
+        .logo p {
+            text-align: center;
+            font-size: 18px;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        .button {
+            color: #fff;
+            border: 2px solid #fff;
+            background-color: transparent;
+            width: 220px;
+            font-size: larger;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #fff;
+            color: #0073e6;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 36px;
+            width: 100%;
+        }
+
+        .member-card {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            background-color: #cac7c7;
+        }
+
+        .member-card h2 {
+            margin-top: 0;
+            color: #0073e6;
+            font-size: 24px;
+        }
+
+        .member-card p {
+            color: #333;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="index.html">
+            <img src="images/logo-Photoroom.png-Photoroom.png" alt="Logo">
+        </a>
+        <p>KIẾN THỨC - KINH NGHIỆM - TRẢI NGHIỆM</p>
+    </div>
+    <a href="index.html" class="button">Quay Về Trang Chủ</a>
+    <div class="container">
+        <h1>Thông Tin Thành Viên Nhóm</h1>
+        <div class="member-card">
+            <h2>Lê Nguyễn Tuấn Đạt</h2>
+            <p><b>Chức vụ</b>: Trưởng nhóm</p>
+            <p><b>Email</b>: nva@example.com</p>
+            <p><b>Số điện thoại</b>: +84 123 456 789</p>
+        </div>
+        <div class="member-card">
+            <h2>Nguyễn Thị Mỹ Thanh</h2>
+            <p><b>Chức vụ</b>: Thành Viên</p>
+            <p><b>Email</b>: ttb@example.com</p>
+            <p><b>Số điện thoại</b>: +84 987 654 321</p>
+        </div>
+        <div class="member-card">
+            <h2>Hồ Kiến Thức</h2>
+            <p><b>Chức vụ</b>: Thành viên</p>
+            <p><b>Email</b>: thuckien76@gmail.com</p>
+            <p><b>Số điện thoại</b>: +84 123 123 123</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+
+
+.danhmuc{
+    border: 1px solid rgb(230, 221, 221);
+    background-color:#f5f5f5;
+    display: block;
+    height: 50px;
+    font-size: 13px;
+    font-style:initial ;
+    padding-left: 100px;
+    padding-top: 15px;
+}
+.danhmuc a{
+    padding: 10px 5px;
+    color: rgb(44, 43, 43);
+}
+
+.danhmuc span{
+    font-size: 15px;
+    color: aquamarine;
+}
+
+.sanpham{
+    width: 1250px;
+    margin: 0 auto;
+     display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    
+    
+}
+
+select {
+    border: none;
+    background-color: transparent; 
+    font-size: 13px; 
+    padding: 5px;
+  
+    border-bottom: 1px solid black; 
+
+    padding-right: 20px; 
+    outline: none;
+}
+
+select:focus {
+    outline: none;
+    border-bottom: 1px solid black;
+
+}
+
+.cart{
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 50px;
+   text-align: center;
+   margin-bottom: 50px;
+    
+}
+#card-table{
+    margin: 0 auto;
+    width: 90%;
+}
+.price-total{
+    margin-top: 20px;
+    text-align: end;
+    margin-right: 80px;
+}
+

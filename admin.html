@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Admin </title>
+    <link rel="shortcut icon" href="img/favicon.ico" />
+
+    <!-- Load font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous">
+
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+    <!-- Our files -->
+    <link rel="stylesheet" href="css/admin/style.css">
+    <link rel="stylesheet" href="css/admin/progress.css">
+
+
+    <style>
+        /* Additional styling for the sidebar */
+        .sidebar {
+            width: 200px;
+            height: 100%;
+            position: fixed;
+            background: #333;
+            color: #fff;
+            padding-top: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .sidebar ul li a:hover,
+        .sidebar ul li a.active {
+            background: #575757;
+        }
+
+        .main {
+            margin-left: 220px;
+            padding: 20px;
+        }
+
+        .sanpham,
+        .khachhang {
+            display: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2> Admin</h2>
+    </header>
+
+    <!-- Menu -->
+    <aside class="sidebar">
+        <ul class="nav">
+            <li class="nav-title">MENU</li>
+
+            <li class="nav-item"><a class="nav-link" id="sanpham-link"><i class="fa fa-th-large"></i> Sản Phẩm</a></li>
+            <li class="nav-item"><a class="nav-link" id="khachhang-link"><i class="fa fa-address-book-o"></i> Khách
+                    Hàng</a></li>
+            <li class="nav-item">
+                <hr>
+            </li>
+            <li class="nav-item">
+                <a href="index.html" class="nav-link" onclick="logOutAdmin(); return true;">
+                    <i class="fa fa-arrow-left"></i>
+                    Đăng xuất (về Trang chủ)
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <div class="main">
+        <!-- Sản Phẩm -->
+        <div class="sanpham" id="sanpham-section">
+            <table class="table-header">
+                <thead>
+                    <tr>
+                        <!-- Theo độ rộng của table content -->
+                        <th title="Sắp xếp" style="width: 5%" onclick="sortProductsTable('stt')">Stt <i
+                                class="fa fa-sort"></i>
+
+                        </th>
+                        <th title="Sắp xếp" style="width: 15%" onclick="sortProductsTable('anh')">Ảnh <i
+                                class="fa fa-sort"></i></th>
+                        <th title="Sắp xếp" style="width: 50%" onclick="sortProductsTable('ten')">Tên <i
+                                class="fa fa-sort"></i></th>
+                        <th title="Sắp xếp" style="width: 15%" onclick="sortProductsTable('gia')">Giá <i
+                                class="fa fa-sort"></i></th>
+                        <th title="Sắp xếp" style="width: 15%" onclick="sortProductsTable('khuyenmai')">Số lượng <i
+                                class="fa fa-sort"></i></th>
+                        <th style="width: 10%">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody id="product-table-body">
+                    <!-- Dữ liệu sản phẩm sẽ được thêm vào đây -->
+                </tbody>
+            </table>
+            <div id="editProductModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Chỉnh sửa sản phẩm</h2>
+                    <form id="editProductForm">
+                        <label for="productName">Tên sản phẩm:</label>
+                        <input type="text" id="productName" name="productName" value="">
+                        <label for="productPrice">Giá tiền:</label>
+                        <input type="text" id="productPrice" name="productPrice" value="">
+                        <label for="productQuantity">Số lượng:</label>
+                        <input type="number" id="productQuantity" name="productQuantity" value="">
+                        <button type="submit">Lưu</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="table-content">
+            </div>
+
+            <div class="table-footer">
+                <select name="kieuTimSanPham">
+                    <option value="ten">Tìm theo tên</option>
+                </select>
+                <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemSanPham(this)">
+                <button
+                    onclick="document.getElementById('khungThemSanPham').style.transform = 'scale(1)'; autoMaSanPham()">
+                    <i class="fa fa-plus-square"></i>
+                    Thêm sản phẩm
+                </button>
+            </div>
+
+            <div id="khungThemSanPham" class="overlay">
+                <span class="close" onclick="this.parentElement.style.transform = 'scale(0)';">&times;</span>
+                <table class="overlayTable table-outline table-content table-header">
+                    <tr>
+                        <th colspan="2">Thêm Sản Phẩm</th>
+                    </tr>
+
+                    <tr>
+                        <td>Hình:</td>
+                        <td>
+                            <img class="hinhDaiDien">
+                            <input type="file">
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tên sản phẩm:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Giá tiền:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Số lượng:</td>
+                        <td><input type="number"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" class="table-footer"> <button onclick="themSanPham()">THÊM</button> </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div id="khungSuaSanPham" class="overlay"></div>
+        </div> <!-- // sanpham -->
+        <!-- Khách hàng -->
+        <div class="khachhang" id="khachhang-section">
+            <table class="table-header">
+                <thead>
+                    <tr>
+                        <!-- Theo độ rộng của table content -->
+                        <th title="Sắp xếp" style="width: 5%">Stt <i class="fa fa-sort"></i></th>
+                        <th title="Sắp xếp" style="width: 20%">Email <i class="fa fa-sort"></i></th>
+                        <th title="Sắp xếp" style="width: 20%">Tài khoản <i class="fa fa-sort"></i></th>
+                        <th title="Sắp xếp" style="width: 10%">Mật khẩu <i class="fa fa-sort"></i></th>
+                        <th style="width: 10%">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody id="customerTableBody">
+                    <!-- Dữ liệu khách hàng sẽ được thêm vào đây -->
+                </tbody>
+                <tfoot>
+                    <!-- Phần footer nếu cần -->
+                </tfoot>
+            </table>
+
+
+
+            <div class="table-footer">
+               
+                <button onclick="openAddUserModal()"><i class="fa fa-plus-square"></i> Thêm người dùng</button>
+
+                <!-- Modal để thêm người dùng mới -->
+                <div id="addUserModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeAddUserModal()">&times;</span>
+                        <h2>Thêm Người Dùng Mới</h2>
+                        <form id="addUserForm">
+                            <label for="newEmail">Email:</label>
+                            <input type="email" id="newEmail" required>
+                            <label for="newUsername">Tài khoản:</label>
+                            <input type="text" id="newUsername" required>
+                            <label for="newPassword">Mật khẩu:</label>
+                            <input type="password" id="newPassword" required>
+                            <button type="submit">Thêm</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="editUserModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeEditUserModal()">&times;</span>
+                        <h2>Chỉnh sửa thông tin khách hàng</h2>
+                        <form id="editUserForm">
+                            <label for="editEmail">Email:</label>
+                            <input type="email" id="editEmail" required>
+                            <label for="editUsername">Tài khoản:</label>
+                            <input type="text" id="editUsername" required>
+                            <label for="editPassword">Mật khẩu:</label>
+                            <input type="password" id="editPassword" required>
+                            <button type="button" onclick="saveEditedUser()">Lưu</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div> <!-- // khach hang -->
+
+        <footer>
+
+        </footer>
+
+        <script>
+            function setActiveLink(linkId) {
+                const links = document.querySelectorAll('.nav-link');
+                links.forEach(link => {
+                    link.classList.remove('active');
+                });
+                document.getElementById(linkId).classList.add('active');
+            }
+
+            document.getElementById('sanpham-link').addEventListener('click', function () {
+                document.getElementById('sanpham-section').style.display = 'block';
+                document.getElementById('khachhang-section').style.display = 'none';
+                setActiveLink('sanpham-link');
+            });
+
+            document.getElementById('khachhang-link').addEventListener('click', function () {
+                document.getElementById('sanpham-section').style.display = 'none';
+                document.getElementById('khachhang-section').style.display = 'block';
+                setActiveLink('khachhang-link');
+            });
+
+
+        </script>
+        <script>
+            // Dữ liệu sản phẩm
+            const products = [
+                { id: 1, image: "images/aokhoac1.webp", name: "Áo Khoác Nỉ Có Nón Regular AKN0116", price: "350.000", quantity: 40 },
+                { id: 2, image: "images/aokhoac2.webp", name: "Áo Khoác Dù Phối 2 Lớp AKD0036", price: "295.000", quantity: 10 },
+                { id: 3, image: "images/aokhoac3.webp", name: "Áo Khoác Dù 2 Lớp AKD0030", price: "295.000", quantity: 22 },
+                { id: 4, image: "images/aokhoac4.webp", name: "Áo Khoác Dù 2 Lớp AKD0030", price: "295.000", quantity: 25 },
+                { id: 5, image: "images/aokhoac5.webp", name: "Áo Khoác Dù Trắng Phối Xéo AKD0041", price: "350.000", quantity: 20 },
+                { id: 7, image: "images/aokhoac6.webp", name: "Áo Khoác Dù Phối Túi AKD0035", price: "355.000", quantity: 40 },
+                { id: 8, image: "images/aokhoac7.webp", name: "Áo Khoác Dù Dây Kéo Xéo AKD0042", price: "350.000", quantity: 70 },
+                { id: 9, image: "images/aothun1.jpg", name: "Áo Thun PoLo Nam ATP0039", price: "280.000", quantity: 40 },
+                { id: 10, image: "images/aothun2.webp", name: "Áo Thun PoLo Nam ATP0039", price: "295.000", quantity: 20 },
+                { id: 11, image: "images/aothun3.jpg", name: "Áo Thun PoLo Nam ATP0039", price: "280.000", quantity: 10 },
+                { id: 12, image: "images/aothun5.webp", name: "Áo Thun Tanktop ATN0162", price: "195.000", quantity: 77 },
+                { id: 13, image: "images/aothun6.webp", name: "Áo Thun Tanktop ATN0162", price: "195.000", quantity: 33 },
+                { id: 14, image: "images/q1.jpg", name: "Quần Short Jean Cotton QSJ0023", price: "350.000", quantity: 22 },
+                { id: 15, image: "images/q2.jpg", name: "Quần Short Jean Cotton QSJ0022", price: "350.000", quantity: 21 },
+                { id: 16, image: "images/q3.jpg", name: "Quần Short Jean Cotton QSJ0021", price: "350.000", quantity: 24 },
+                { id: 17, image: "images/q4.jpg", name: "Quần Short Jean Cotton QSJ0020", price: "350.000", quantity: 23 },
+                { id: 18, image: "images/q5.webp", name: "Quần Short Jean QSJ0024", price: "295.000", quantity: 23 },
+                { id: 19, image: "images/q6.webp", name: "Quần Short KaKi Nam QSK0065", price: "220.000", quantity: 21 },
+                { id: 20, image: "images/q7.webp", name: "Quần Short KaKi Nam QSK0066", price: "220.000", quantity: 277 },
+                { id: 21, image: "images/sm1.webp", name: "Sơ Mi Trắng Vải Lụa Dày SMD0089", price: "295.000", quantity: 99},
+                { id: 22, image: "images/sm2.webp", name: "Sơ Mi Trắng Gấu Nút SMD0081", price: "255.000", quantity: 27 },
+                { id: 23, image: "images/sm3.webp", name: "Sơ Mi Cotton Tay Dài SMD0097", price: "320.000", quantity: 24 },
+                { id: 24, image: "images/sm4.webp", name: "Sơ Mi Cotton Tay Dài SMD0088", price: "295.000", quantity: 29 },
+                { id: 25, image: "images/sm5.webp", name: "Sơ Mi Cotton Tay Dài SMD009736", price: "285.000", quantity: 11 },
+                { id: 26, image: "images/sm6.webp", name: "Sơ Mi Trắng Vải Lụa Dày SMD0088", price: "320.000", quantity: 22 },
+                { id: 27, image: "images/sm7.webp", name: "Sơ Mi Cotton Tay Dài ,Trắng Vải Lụa Dày SMD0089", price: "295.000", quantity: 55 },
+                { id: 28, image: "images/aokhoac8.webp", name: "Áo Khoác Dù Phối 2 Lớp AKD0036", price: "295.000", quantity: 9 },
+                { id: 29, image: "images/aokhoac9.jpg", name: "Áo Khoác KaKi Jean Đen AKD0036", price: "555.000", quantity: 80 },
+                { id: 30, image: "images/aokhoac10.jpg", name: "Áo Khoác KakI Nam AKD0036", price: "295.000", quantity: 3 },
+                { id: 31, image: "images/aokhoac11.jpg", name: "Áo Khoác Dù 2 Lớp AKD0036", price: "275.000", quantity: 8 },
+                { id: 32, image: "images/qd1.jpg", name: "Quần Kaki Nam QKK0051", price: "280.000", quantity: 2 },
+                { id: 33, image: "images/qd2.jpg", name: "Quần Kaki Nam QKK0050", price: "295.000", quantity: 55 },
+                { id: 34, image: "images/qd3.jpg", name: "Quần Kaki Dài Đen Slimfit QKK0050", price: "350.000", quantity: 11 },
+                { id: 35, image: "images/qd4.jpg", name: "Quần Kaki Dài Đen Slimfit QKK0048", price: "350.000", quantity: 22 },
+                
+                // Thêm các sản phẩm khác nếu cần
+            ];
+
+            // Lấy tham chiếu đến tbody của bảng sản phẩm trong HTML
+            const tbody = document.getElementById('product-table-body');
+
+            // Lặp qua mỗi sản phẩm và tạo các hàng trong tbody
+            products.forEach(product => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+        <td>${product.id}</td>
+        <td><img src="${product.image}" alt=""></td>
+        <td>${product.name}</td>
+        <td>${product.price} <sup>đ</sup></td>
+        <td>${product.quantity}</td>
+        <td>
+            <button id="editProductButton${product.id}" onclick="editProduct(${product.id})">Sửa</button>
+            <button id="deleteProductButton${product.id}" onclick="deleteProduct(${product.id})">Xóa</button>
+        </td>
+    `;
+                tbody.appendChild(row);
+            });
+
+            // Lấy tham chiếu đến cửa sổ modal và nút đóng
+            const modal = document.getElementById('editProductModal');
+            const closeModalButton = modal.querySelector('.close');
+
+            // Hàm để hiển thị cửa sổ modal
+            function openEditProductModal() {
+                modal.style.display = 'block';
+            }
+
+            // Hàm để đóng cửa sổ modal
+            function closeEditProductModal() {
+                modal.style.display = 'none';
+            }
+
+            // Xử lý sự kiện khi nhấn nút đóng
+            closeModalButton.addEventListener('click', closeEditProductModal);
+
+            // Xử lý sự kiện khi nhấn ra ngoài cửa sổ modal
+            window.addEventListener('click', function (event) {
+                if (event.target === modal) {
+                    closeEditProductModal();
+                }
+            });
+            let editingProductId = null;
+            // Hàm để mở cửa sổ modal và điền thông tin sản phẩm cần chỉnh sửa
+            function editProduct(productId) {
+                editingProductId = productId;
+                const productToEdit = products.find(product => product.id === productId);
+                if (productToEdit) {
+                    // Điền thông tin sản phẩm vào các trường input trong cửa sổ modal
+                    const productNameInput = document.getElementById('productName');
+                    const productPriceInput = document.getElementById('productPrice');
+                    const productQuantityInput = document.getElementById('productQuantity');
+                    productNameInput.value = productToEdit.name;
+                    productPriceInput.value = productToEdit.price;
+                    productQuantityInput.value = productToEdit.quantity;
+                    // Mở cửa sổ modal
+                    openEditProductModal();
+                } else {
+                    console.log('Không tìm thấy sản phẩm có ID:', productId);
+                }
+            }
+            const editProductForm = document.getElementById('editProductForm');
+
+            editProductForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Ngăn chặn hành vi submit mặc định của biểu mẫu
+                saveEditedProduct();
+            });
+
+            function saveEditedProduct() {
+                // Lấy thông tin sản phẩm đã chỉnh sửa từ các trường biểu mẫu
+                const productId = editingProductId;// Thay thế bằng logic để lấy ID của sản phẩm đang được chỉnh sửa
+                const productName = document.getElementById('productName').value;
+                const productPrice = document.getElementById('productPrice').value;
+                const productQuantity = document.getElementById('productQuantity').value;
+
+                // Tìm sản phẩm trong mảng `products` dựa trên ID
+                const productIndex = products.findIndex(product => product.id === productId);
+                if (productIndex !== -1) {
+                    // Cập nhật thông tin sản phẩm trong mảng `products`
+                    products[productIndex].name = productName;
+                    products[productIndex].price = productPrice;
+                    products[productIndex].quantity = productQuantity;
+
+                    // Cập nhật thông tin sản phẩm trong bảng (tùy chọn)
+                    updateProductTableRow(productId, productName, productPrice, productQuantity);
+
+                    // Đóng modal chỉnh sửa sản phẩm
+                    closeModalEditProductModal();
+
+                    console.log('Sản phẩm đã được lưu thành công!');
+                } else {
+                    console.error('Sản phẩm không tìm thấy!');
+                }
+            }
+
+            function updateProductTableRow(productId, productName, productPrice, productQuantity) {
+                // Tìm hàng bảng cho sản phẩm
+                const productRow = document.getElementById(`editProductButton${productId}`).parentElement.parentElement;
+
+                // Cập nhật nội dung ô bảng
+                productRow.children[2].textContent = productName;
+                productRow.children[3].innerHTML = productPrice + ' <sup>đ</sup>';
+                productRow.children[4].textContent = productQuantity;
+            }
+            // Hàm để xóa sản phẩm
+            function deleteProduct(productId) {
+                // Tìm sản phẩm trong danh sách sản phẩm dựa trên ID
+                const index = products.findIndex(product => product.id === productId);
+                if (index !== -1) {
+                    // Xóa sản phẩm khỏi danh sách sản phẩm
+                    products.splice(index, 1);
+                    // Cập nhật lại giao diện bảng sản phẩm
+                    renderProductsTable();
+                    console.log('Đã xóa sản phẩm có ID:', productId);
+                } else {
+                    console.log('Không tìm thấy sản phẩm có ID:', productId);
+                }
+            }
+
+            // Hàm để render lại bảng sản phẩm sau khi có thay đổi
+            function renderProductsTable() {
+                // Xóa tất cả các hàng trong tbody
+                tbody.innerHTML = '';
+                // Biến đếm số thứ tự
+                let stt = 1;
+                // Lặp qua danh sách sản phẩm và tạo lại các hàng trong tbody
+                products.forEach(product => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+            <td>${stt}</td>
+            <td><img src="${product.image}" alt=""></td>
+            <td>${product.name}</td>
+            <td>${product.price} <sup>đ</sup></td>
+            <td>${product.quantity}</td>
+            <td>
+                <button id="editProductButton${product.id}" onclick="editProduct(${product.id})">Sửa</button>
+                <button id="deleteProductButton${product.id}" onclick="deleteProduct(${product.id})">Xóa</button>
+            </td>
+        `;
+                    tbody.appendChild(row);
+                    stt++; // Tăng số thứ tự sau mỗi lần thêm hàng mới
+                });
+            }
+
+
+
+        </script>
+        <script>
+            // Hàm để thêm sản phẩm mới
+            function themSanPham() {
+                // Lấy thông tin từ các trường nhập liệu
+                const tenSanPham = document.getElementById('khungThemSanPham').querySelector('input[type="text"]').value;
+                const giaTien = document.getElementById('khungThemSanPham').querySelector('input[type="number"]').value;
+                const soLuong = document.getElementById('khungThemSanPham').querySelector('input[type="number"]').value;
+                const anhSanPham = document.getElementById('khungThemSanPham').querySelector('input[type="file"]').files[0]; // Lấy file ảnh được chọn
+
+                // Tạo một đối tượng FileReader để đọc dữ liệu từ file ảnh
+                const reader = new FileReader();
+
+                // Xử lý sự kiện khi đọc file ảnh thành công
+                reader.onload = function (event) {
+                    // Hiển thị hình ảnh được chọn trong thẻ <img>
+                    const hinhAnhDaiDien = document.getElementById('khungThemSanPham').querySelector('.hinhDaiDien');
+                    hinhAnhDaiDien.src = event.target.result;
+
+                    // Tạo đối tượng mới của sản phẩm
+                    const newProduct = {
+                        id: products.length + 1, // Tạo ID mới cho sản phẩm, có thể sử dụng logic khác nếu cần
+                        name: tenSanPham,
+                        price: giaTien,
+                        quantity: soLuong,
+                        image: event.target.result, // Sử dụng đường dẫn của hình ảnh từ file đọc thành công
+                        // Thêm các thông tin khác nếu cần
+                    };
+
+                    // Thêm sản phẩm vào mảng products
+                    products.push(newProduct);
+
+                    // Render lại bảng sản phẩm
+                    renderProductsTable();
+
+                    // Đóng khung thêm sản phẩm
+                    document.getElementById('khungThemSanPham').style.transform = 'scale(0)';
+                };
+
+                // Nếu người dùng đã chọn file ảnh, tiến hành đọc file
+                if (anhSanPham) {
+                    reader.readAsDataURL(anhSanPham); // Đọc file ảnh thành dữ liệu URL
+                } else {
+                    // Nếu người dùng không chọn file ảnh, bạn có thể hiển thị một thông báo hoặc thực hiện các xử lý khác tùy theo yêu cầu
+                    console.error('Bạn chưa chọn hình ảnh sản phẩm!');
+                }
+            }
+
+
+
+        </script>
+</body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentUser = localStorage.getItem('currentUser');
+    const userData = localStorage.getItem(currentUser);
+    const user = JSON.parse(userData);
+    const userTable = document.getElementById('khachhang-section');
+
+    if (currentUser && user) {
+        // Tạo phần tử tr để chứa thông tin của người dùng
+        const userRow = document.createElement('tr');
+
+        // Điền thông tin người dùng vào các ô của hàng
+        userRow.innerHTML = `
+            <td class="stt"></td>
+            <td>${user.email}</td>
+            <td>${user.username}</td>
+            <td>${user.password}</td>
+            <td>
+                <button onclick="editUser(this)">Sửa</button>
+                <button onclick="deleteUser(this)">Xóa</button>
+            </td>
+        `;
+
+        // Thêm hàng chứa thông tin người dùng vào tbody của bảng
+        userTable.querySelector('tbody').appendChild(userRow);
+
+        // Cập nhật số thứ tự cho tất cả các hàng trong tbody
+        updateRowNumbers(userTable);
+    } else {
+        // Nếu không có thông tin người dùng, hiển thị thông báo trong tfoot
+        const tfootRow = document.createElement('tr');
+        tfootRow.innerHTML = "<td colspan='5'>Không có thông tin người dùng</td>";
+        userTable.querySelector('tfoot').appendChild(tfootRow);
+    }
+});
+
+// Hàm xóa người dùng
+function deleteUser(button) {
+    const row = button.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+    const userTable = document.getElementById('khachhang-section');
+    updateRowNumbers(userTable);
+}
+
+// Hàm cập nhật số thứ tự của các hàng trong bảng người dùng
+function updateRowNumbers(table) {
+    const rows = table.querySelectorAll('tbody tr');
+    rows.forEach((row, index) => {
+        row.querySelector('.stt').textContent = index + 1;
+    });
+}
+
+// Hàm sửa thông tin khách hàng
+function editUser(button) {
+    const modal = document.getElementById('editUserModal');
+    modal.style.display = 'block';
+
+    // Lấy thông tin khách hàng từ hàng đã chọn trong bảng
+    const selectedRow = button.parentNode.parentNode;
+    selectedRow.classList.add('editing'); // Thêm lớp 'editing' vào hàng đang chỉnh sửa
+    const email = selectedRow.cells[1].textContent;
+    const username = selectedRow.cells[2].textContent;
+    const password = selectedRow.cells[3].textContent;
+
+    // Điền thông tin khách hàng vào các trường input trong modal
+    document.getElementById('editEmail').value = email;
+    document.getElementById('editUsername').value = username;
+    document.getElementById('editPassword').value = password;
+}
+
+// Hàm lưu thông tin khách hàng đã chỉnh sửa
+function saveEditedUser() {
+    // Lấy thông tin khách hàng đã chỉnh sửa từ các trường input trong modal
+    const email = document.getElementById('editEmail').value;
+    const username = document.getElementById('editUsername').value;
+    const password = document.getElementById('editPassword').value;
+
+    // Để cập nhật thông tin khách hàng trong bảng, bạn cần truy cập vào hàng đang chỉnh sửa
+    const selectedRow = document.querySelector('#khachhang-section tbody tr.editing');
+    selectedRow.cells[1].textContent = email;
+    selectedRow.cells[2].textContent = username;
+    selectedRow.cells[3].textContent = password;
+
+    // Xóa lớp 'editing' từ hàng đã chỉnh sửa
+    selectedRow.classList.remove('editing');
+
+    // Đóng modal sau khi lưu thông tin thành công
+    const modal = document.getElementById('editUserModal');
+    modal.style.display = 'none';
+}
+
+const customers = [
+    { email: "datle5821@gmail.com", username: "datnhutnhat", password: "Datle2004@" },
+    { email: "tuandatle5721@gmai.com", username: "datsoma", password: "Datle2004@" },
+    // Thêm các khách hàng khác nếu cần
+];
+
+customers.forEach((customer) => {
+    localStorage.setItem(customer.username, JSON.stringify(customer));
+});
+
+// Chọn phần tử tbody của bảng
+const customerTableBody = document.getElementById("customerTableBody");
+
+// Duyệt qua mảng khách hàng và thêm từng khách hàng vào bảng
+customers.forEach((customer, index) => {
+    const row = `
+    <tr>
+        <td>${index + 1}</td>
+        <td>${customer.email}</td>
+        <td>${customer.username}</td>
+        <td>${customer.password}</td>
+        <td>
+            <button onclick="editUser(this)">Sửa</button>
+            <button onclick="deleteUser(this)">Xóa</button>
+        </td>
+    </tr>
+`;
+    customerTableBody.innerHTML += row;
+});
+
+
+</script>
+<script>
+// Mở modal
+function openAddUserModal() {
+    document.getElementById("addUserModal").style.display = "block";
+}
+
+// Đóng modal
+function closeAddUserModal() {
+    document.getElementById("addUserModal").style.display = "none";
+}
+
+// Xử lý việc thêm người dùng mới
+document.getElementById("addUserForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Lấy thông tin từ form
+    const newEmail = document.getElementById("newEmail").value;
+    const newUsername = document.getElementById("newUsername").value;
+    const newPassword = document.getElementById("newPassword").value;
+
+    // Tạo một hàng mới cho bảng
+    const tableBody = document.getElementById("customerTableBody");
+    const newRow = tableBody.insertRow();
+
+    // Thêm các ô vào hàng mới
+    const cell1 = newRow.insertCell(0);
+    const cell2 = newRow.insertCell(1);
+    const cell3 = newRow.insertCell(2);
+    const cell4 = newRow.insertCell(3);
+    const cell5 = newRow.insertCell(4);
+
+    // Điền dữ liệu vào các ô
+    cell1.innerHTML = tableBody.rows.length;
+    cell2.innerHTML = newEmail;
+    cell3.innerHTML = newUsername;
+    cell4.innerHTML = newPassword;
+    cell5.innerHTML = '<button onclick="editRow(this)">Sửa</button> <button onclick="deleteRow(this)">Xóa</button>';
+
+    // Đóng modal
+    closeAddUserModal();
+
+    // Reset form
+    document.getElementById("addUserForm").reset();
+});
+
+// Xóa hàng khỏi bảng
+function deleteRow(button) {
+    const row = button.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+}
+
+</script>
+
+</html>
